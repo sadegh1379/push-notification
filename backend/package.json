@@ -1,0 +1,27 @@
+{
+  "name": "push-notification-server",
+  "version": "1.0.0",
+  "description": "سرور Node.js برای مدیریت پوش نوتیفیکیشن",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "generate-vapid": "node generate-vapid.js"
+  },
+  "keywords": [
+    "push-notification",
+    "web-push",
+    "nodejs",
+    "express"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "web-push": "^3.6.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1"
+  }
+}
+

@@ -1,0 +1,16 @@
+{
+    "name": "سیستم پوش نوتیفیکیشن",
+    "short_name": "Push Notif",
+    "description": "سیستم مدیریت پوش نوتیفیکیشن",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#3b82f6",
+    "icons": [
+      {
+        "src": "/next.svg",
+        "sizes": "any",
+        "type": "image/svg+xml"
+      }
+    ]
+  }
