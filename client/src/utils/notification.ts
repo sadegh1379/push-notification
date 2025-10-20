@@ -104,7 +104,7 @@ export async function unsubscribeUser(): Promise<boolean> {
 
 export async function sendSubscriptionToServer(
   subscription: PushSubscription,
-  serverUrl: string = 'http://localhost:4000'
+  serverUrl: string = process.env.NEXT_PUBLIC_SERVER_URL!
 ): Promise<boolean> {
   try {
     const response = await fetch(`${serverUrl}/api/subscribe`, {
@@ -130,7 +130,7 @@ export async function sendSubscriptionToServer(
 // حذف subscription از سرور
 export async function removeSubscriptionFromServer(
   subscription: PushSubscription,
-  serverUrl: string = 'http://localhost:4000'
+  serverUrl: string = process.env.NEXT_PUBLIC_SERVER_URL!
 ): Promise<boolean> {
   try {
     const response = await fetch(`${serverUrl}/api/unsubscribe`, {

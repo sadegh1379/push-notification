@@ -43,7 +43,7 @@ export default function DebugPanel() {
 
     // Check server
     try {
-      const response = await fetch('http://localhost:4000/', {
+      const response = await fetch(process.env.NEXT_PUBLIC_SERVER_URL!, {
         method: 'GET',
       });
       newStatus.serverOnline = response.ok;

@@ -32,7 +32,7 @@ export default function SendNotificationForm() {
     }
 
     try {
-      const response = await fetch('http://localhost:4000/api/broadcast', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL!}/api/broadcast`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
