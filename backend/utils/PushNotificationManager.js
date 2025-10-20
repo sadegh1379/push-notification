@@ -19,6 +19,7 @@ class PushNotificationManager {
       throw new Error('Invalid subscription');
     }
 
+
     const key = subscription.endpoint;
     this.subscriptions.set(key, subscription);
 
@@ -26,6 +27,7 @@ class PushNotificationManager {
 
     return {
       success: true,
+      subscription,
       totalSubscriptions: this.subscriptions.size
     };
   }
