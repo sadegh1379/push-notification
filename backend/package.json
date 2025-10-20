@@ -1,13 +1,12 @@
 {
   "name": "push-notification-server",
   "version": "1.0.0",
-  "description": "سرور Node.js برای مدیریت پوش نوتیفیکیشن",
+  "description": "",
   "main": "server.js",
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "dev": "node --watch server.js",
-    "generate-vapid": "node generate-vapid.js"
+    "dev": "node --watch server.js"
   },
   "keywords": [
     "push-notification",
