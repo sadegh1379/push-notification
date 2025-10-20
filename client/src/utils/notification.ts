@@ -1,4 +1,3 @@
-// تابع برای تبدیل VAPID key به فرمت قابل استفاده
 function urlBase64ToUint8Array(base64String: string): Uint8Array {
   const padding = '='.repeat((4 - base64String.length % 4) % 4);
   const base64 = (base64String + padding)
@@ -14,7 +13,6 @@ function urlBase64ToUint8Array(base64String: string): Uint8Array {
   return outputArray;
 }
 
-// ثبت Service Worker
 export async function registerServiceWorker(): Promise<ServiceWorkerRegistration | null> {
   if (!('serviceWorker' in navigator)) {
     console.error('Service Worker is not supported in this browser.');
@@ -37,7 +35,6 @@ export async function registerServiceWorker(): Promise<ServiceWorkerRegistration
   }
 }
 
-// بررسی پشتیبانی از نوتیفیکیشن
 export function isPushNotificationSupported(): boolean {
   return (
     'serviceWorker' in navigator &&
@@ -46,7 +43,6 @@ export function isPushNotificationSupported(): boolean {
   );
 }
 
-// درخواست پرمیشن از کاربر
 export async function askUserPermission(): Promise<NotificationPermission> {
   if (!('Notification' in window)) {
     console.error('Notifications are not supported');
@@ -56,7 +52,6 @@ export async function askUserPermission(): Promise<NotificationPermission> {
   return await Notification.requestPermission();
 }
 
-// ساخت subscription با VAPID key
 export async function createNotificationSubscription(
   vapidPublicKey: string
 ): Promise<PushSubscription | null> {
@@ -68,17 +63,16 @@ export async function createNotificationSubscription(
   try {
     const registration = await navigator.serviceWorker.ready;
     
-    // بررسی subscription موجود
     const existingSubscription = await registration.pushManager.getSubscription();
     if (existingSubscription) {
       console.log('Existing subscription found:', existingSubscription);
       return existingSubscription;
     }
 
-    // ساخت subscription جدید
     const applicationServerKey = urlBase64ToUint8Array(vapidPublicKey);
     const subscription = await registration.pushManager.subscribe({
       userVisibleOnly: true,
+      // @ts-ignore
       applicationServerKey: applicationServerKey,
     });
 
@@ -90,7 +84,6 @@ export async function createNotificationSubscription(
   }
 }
 
-// حذف subscription
 export async function unsubscribeUser(): Promise<boolean> {
   try {
     const registration = await navigator.serviceWorker.ready;
@@ -109,7 +102,6 @@ export async function unsubscribeUser(): Promise<boolean> {
   }
 }
 
-// ارسال subscription به سرور
 export async function sendSubscriptionToServer(
   subscription: PushSubscription,
   serverUrl: string = 'http://localhost:4000'
@@ -161,7 +153,6 @@ export async function removeSubscriptionFromServer(
   }
 }
 
-// گرفتن وضعیت فعلی subscription
 export async function getUserSubscription(): Promise<PushSubscription | null> {
   try {
     const registration = await navigator.serviceWorker.ready;

@@ -12,7 +12,7 @@ import {
   getUserSubscription,
 } from '@/utils/notification';
 
-// این کلید را از سرور خود دریافت می‌کنید (بعداً تولید می‌شود)
+// You get this key from your server (will be generated later)
 const VAPID_PUBLIC_KEY = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY || '';
 
 export default function PushNotificationManager() {
@@ -23,18 +23,18 @@ export default function PushNotificationManager() {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    // بررسی پشتیبانی
+    // Check support
     const supported = isPushNotificationSupported();
     setIsSupported(supported);
 
     if (supported) {
-      // بررسی پرمیشن فعلی
+      // Check current permission
       setPermission(Notification.permission);
 
-      // ثبت Service Worker
+      // Register Service Worker
       registerServiceWorker();
 
-      // بررسی subscription فعلی
+      // Check current subscription
       checkSubscription();
     }
   }, []);
@@ -53,37 +53,37 @@ export default function PushNotificationManager() {
     setMessage('');
 
     try {
-      // درخواست پرمیشن
+      // Request permission
       const userPermission = await askUserPermission();
       setPermission(userPermission);
 
       if (userPermission !== 'granted') {
-        setMessage('برای دریافت نوتیفیکیشن باید اجازه دهید!');
+        setMessage('You must grant permission to receive notifications!');
         setLoading(false);
         return;
       }
 
-      // ساخت subscription
+      // Create subscription
       const subscription = await createNotificationSubscription(VAPID_PUBLIC_KEY);
       
       if (!subscription) {
-        setMessage('خطا در ساخت subscription!');
+        setMessage('Error creating subscription!');
         setLoading(false);
         return;
       }
 
-      // ارسال به سرور
+      // Send to server
       const success = await sendSubscriptionToServer(subscription);
       
       if (success) {
         setIsSubscribed(true);
-        setMessage('✅ با موفقیت عضو نوتیفیکیشن شدید!');
+        setMessage('✅ Successfully subscribed to notifications!');
       } else {
-        setMessage('❌ خطا در ارسال به سرور!');
+        setMessage('❌ Error sending to server!');
       }
     } catch (error) {
       console.error('Error subscribing:', error);
-      setMessage('❌ خطا در عضویت!');
+      setMessage('❌ Error subscribing!');
     } finally {
       setLoading(false);
     }
@@ -94,26 +94,26 @@ export default function PushNotificationManager() {
     setMessage('');
 
     try {
-      // گرفتن subscription فعلی
+      // Get current subscription
       const subscription = await getUserSubscription();
       
       if (subscription) {
-        // حذف از سرور
+        // Remove from server
         await removeSubscriptionFromServer(subscription);
       }
 
-      // لغو subscription
+      // Cancel subscription
       const success = await unsubscribeUser();
       
       if (success) {
         setIsSubscribed(false);
-        setMessage('✅ با موفقیت از نوتیفیکیشن خارج شدید!');
+        setMessage('✅ Successfully unsubscribed from notifications!');
       } else {
-        setMessage('❌ خطا در لغو عضویت!');
+        setMessage('❌ Error unsubscribing!');
       }
     } catch (error) {
       console.error('Error unsubscribing:', error);
-      setMessage('❌ خطا در لغو عضویت!');
+      setMessage('❌ Error unsubscribing!');
     } finally {
       setLoading(false);
     }
@@ -123,7 +123,7 @@ export default function PushNotificationManager() {
     return (
       <div className="p-6 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg border border-yellow-200 dark:border-yellow-800">
         <p className="text-yellow-800 dark:text-yellow-200">
-          ⚠️ مرورگر شما از پوش نوتیفیکیشن پشتیبانی نمی‌کند.
+          ⚠️ Your browser does not support push notifications.
         </p>
       </div>
     );
@@ -134,17 +134,17 @@ export default function PushNotificationManager() {
       <div className="space-y-4">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-            🔔 مدیریت نوتیفیکیشن
+            🔔 Notification Management
           </h2>
           <p className="text-sm text-gray-600 dark:text-gray-400">
-            برای دریافت اطلاعیه‌های مهم، عضو شوید
+            Subscribe to receive important updates
           </p>
         </div>
 
         <div className="p-4 bg-gray-50 dark:bg-gray-900/50 rounded-lg">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-              وضعیت دسترسی:
+              Permission Status:
             </span>
             <span
               className={`text-sm font-semibold ${
@@ -155,13 +155,13 @@ export default function PushNotificationManager() {
                   : 'text-yellow-600 dark:text-yellow-400'
               }`}
             >
-              {permission === 'granted' ? '✓ مجاز' : permission === 'denied' ? '✗ رد شده' : '○ نامشخص'}
+              {permission === 'granted' ? '✓ Granted' : permission === 'denied' ? '✗ Denied' : '○ Unknown'}
             </span>
           </div>
           
           <div className="flex items-center justify-between">
             <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-              وضعیت عضویت:
+              Subscription Status:
             </span>
             <span
               className={`text-sm font-semibold ${
@@ -170,7 +170,7 @@ export default function PushNotificationManager() {
                   : 'text-gray-600 dark:text-gray-400'
               }`}
             >
-              {isSubscribed ? '✓ فعال' : '○ غیرفعال'}
+              {isSubscribed ? '✓ Active' : '○ Inactive'}
             </span>
           </div>
         </div>
@@ -190,7 +190,7 @@ export default function PushNotificationManager() {
               disabled={loading}
               className="w-full px-4 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-medium rounded-lg transition-colors duration-200 disabled:cursor-not-allowed"
             >
-              {loading ? '⏳ در حال پردازش...' : '🔔 عضویت در نوتیفیکیشن'}
+              {loading ? '⏳ Processing...' : '🔔 Subscribe to Notifications'}
             </button>
           ) : (
             <button
@@ -198,14 +198,14 @@ export default function PushNotificationManager() {
               disabled={loading}
               className="w-full px-4 py-3 bg-red-600 hover:bg-red-700 disabled:bg-red-400 text-white font-medium rounded-lg transition-colors duration-200 disabled:cursor-not-allowed"
             >
-              {loading ? '⏳ در حال پردازش...' : '🔕 لغو عضویت'}
+              {loading ? '⏳ Processing...' : '🔕 Unsubscribe'}
             </button>
           )}
         </div>
 
         <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
           <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
-            با عضویت، از آخرین اخبار و به‌روزرسانی‌ها مطلع می‌شوید
+            By subscribing, you will be notified of the latest news and updates
           </p>
         </div>
       </div>
