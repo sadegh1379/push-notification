@@ -25,7 +25,6 @@ export async function registerServiceWorker(): Promise<ServiceWorkerRegistration
     });
     console.log('Service Worker registered successfully:', registration);
     
-    // منتظر بمان تا Service Worker فعال شود
     await navigator.serviceWorker.ready;
     
     return registration;
@@ -127,7 +126,6 @@ export async function sendSubscriptionToServer(
   }
 }
 
-// حذف subscription از سرور
 export async function removeSubscriptionFromServer(
   subscription: PushSubscription,
   serverUrl: string = process.env.NEXT_PUBLIC_SERVER_URL!
