@@ -1,6 +1,7 @@
 <div align="center">
  <img src="./demo.gif" alt="push notification demo" width="100%" />
 </div>
+
 # 🔔 Push Notification System
 
 A modern, full-stack push notification system built with **Next.js 15** and **Node.js**. This project demonstrates how to implement web push notifications with service workers, VAPID authentication, and a beautiful UI.
