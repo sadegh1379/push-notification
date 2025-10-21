@@ -15,7 +15,6 @@ A modern, full-stack push notification system built with **Next.js 15** and **No
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.x-38B2AC?style=flat-square&logo=tailwind-css)
 
 </div>
----
 
 ## ✨ Features
 
