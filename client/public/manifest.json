@@ -1,14 +1,14 @@
 {
-    "name": "سیستم پوش نوتیفیکیشن",
-    "short_name": "Push Notif",
-    "description": "سیستم مدیریت پوش نوتیفیکیشن",
+    "name": "Push Notification App",
+    "short_name": "PushNotify App",
+    "description": "Push Notification Management App",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#3b82f6",
     "icons": [
       {
-        "src": "/next.svg",
+        "src": "/vercel.svg",
         "sizes": "any",
         "type": "image/svg+xml"
       }
