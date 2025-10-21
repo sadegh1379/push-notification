@@ -143,5 +143,4 @@ app.use((req, res) => {
 app.listen(PORT, () => {
   console.log('\n🚀 Push Notification Server Started');
   console.log(`📡 Server URL: http://localhost:${PORT}`);
-  console.log('\n✨ Ready to handle requests...\n');
 });
