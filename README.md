@@ -1,5 +1,5 @@
 <div align="center">
- <img src="./demo.jpg" alt="push notification demo" width="100%" />
+ <img src="./demo2.png" alt="push notification demo" width="100%" />
 </div>
 
 <div align="center">
@@ -12,7 +12,6 @@ A modern, full-stack push notification system built with **Next.js 15** and **No
 ![React](https://img.shields.io/badge/React-19.1.0-blue?style=flat-square&logo=react)
 ![Node.js](https://img.shields.io/badge/Node.js-Latest-green?style=flat-square&logo=node.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?style=flat-square&logo=typescript)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.x-38B2AC?style=flat-square&logo=tailwind-css)
 
 </div>
 
@@ -23,7 +22,6 @@ A modern, full-stack push notification system built with **Next.js 15** and **No
 - 👥 **Subscription Management** - Subscribe/Unsubscribe functionality
 - 📤 **Broadcast Messaging** - Send notifications to all subscribed users
 - 🎯 **Targeted Notifications** - Send to specific users by endpoint
-- 🎨 **Modern UI** - Beautiful, responsive design with dark mode support
 - 🔍 **Debug Panel** - System status monitoring for troubleshooting
 - 📱 **Progressive Web App** - PWA support with manifest and service worker
 - ⚡ **Real-time Updates** - Instant notification delivery
@@ -100,7 +98,7 @@ Before you begin, ensure you have the following installed:
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/sadegh1379/push-notification.git
 cd push-notification-nextjs
 ```
 
@@ -114,7 +112,7 @@ cd backend
 npm install
 
 # Generate VAPID keys
-node generate-vapid.js
+web-push generate-vapid-keys
 
 # Copy example.env to .env
 cp example.env .env
