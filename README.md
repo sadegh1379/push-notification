@@ -1,5 +1,5 @@
 <div align="center">
- <img src="./demo2-test.png" alt="push notification demo" width="100%" />
+ <img src="./demo.png" alt="push notification demo" width="100%" />
 </div>
 
 <div align="center">
