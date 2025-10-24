@@ -1,5 +1,5 @@
 <div align="center">
- <img src="./demo2.png" alt="push notification demo" width="100%" />
+ <img src="./demo-Photoroom.png" alt="push notification demo" width="100%" />
 </div>
 
 <div align="center">
