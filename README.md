@@ -6,7 +6,7 @@
 
 # 🔔 Push Notification System
 
-A modern, full-stack push notification system built with **Next.js 15** and **Node.js**. This project demonstrates how to implement web push notifications with service workers, VAPID authentication, and a beautiful UI.
+A modern, full-stack push notification system built with **Next.js 15** and **Node.js**. This project demonstrates how to implement web push notifications with service workers, VAPID authentication.
 
 ![Next.js](https://img.shields.io/badge/Next.js-15.5.6-black?style=flat-square&logo=next.js)
 ![React](https://img.shields.io/badge/React-19.1.0-blue?style=flat-square&logo=react)
@@ -14,6 +14,16 @@ A modern, full-stack push notification system built with **Next.js 15** and **No
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?style=flat-square&logo=typescript)
 
 </div>
+
+---
+
+## 🎬 Demo Video
+
+Watch the demo videos to see push notifications working on real servers and different platforms:
+
+- **📱 [Demo Video](./ios-demo.mp4)** - Real server demo showing push notifications on iOS/Safari mobile
+
+---
 
 ## ✨ Features
 
@@ -79,20 +89,6 @@ push-notification-nextjs/
 │
 └── README.md                  # This file
 ```
-
----
-
-## 📋 Prerequisites
-
-Before you begin, ensure you have the following installed:
-
-- **Node.js** (v18 or higher) - [Download](https://nodejs.org/)
-- **npm** or **yarn** - Package manager
-- A modern browser (Chrome, Firefox, Edge, Safari)
-- HTTPS or localhost (required for service workers)
-
----
-
 ## 🚀 Installation & Setup
 
 ### 1️⃣ Clone the Repository
@@ -343,34 +339,6 @@ For testing on mobile devices or other computers:
 6. **Hard Refresh**
    - Press `Ctrl+Shift+R` (Windows) or `Cmd+Shift+R` (Mac)
    - Clear service worker cache if needed
-
----
-
-## 📱 Progressive Web App (PWA)
-
-This project includes PWA support:
-
-- **manifest.json** - App metadata and icons
-- **Service Worker** - Offline capability and push notifications
-- **Installable** - Can be installed on home screen
-
----
-
-## 📝 Scripts
-
-### Backend
-```bash
-npm start       # Start server (production)
-npm run dev     # Start server with auto-reload (development)
-```
-
-### Frontend
-```bash
-npm run dev     # Start Next.js dev server with Turbopack
-npm run build   # Build for production
-npm start       # Start production server
-npm run ngrok   # Expose localhost via ngrok
-```
 
 ---
 
