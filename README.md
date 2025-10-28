@@ -17,6 +17,17 @@ A modern, full-stack push notification system built with **Next.js 15** and **No
 
 ---
 
+<<<<<<< HEAD
+=======
+## 🎬 Demo Video
+
+Watch the demo videos to see push notifications working on real servers and different platforms:
+
+- **📱 [Demo Video](./demo.mp4)** - Real server demo showing push notifications on iOS/Safari mobile
+
+---
+
+>>>>>>> 37a055c498c0160ed4f784f758b95bef265a91a0
 ## ✨ Features
 
 - 🔔 **Push Notifications** - Real-time web push notifications using Web Push API
