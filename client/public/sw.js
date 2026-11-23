@@ -46,46 +46,6 @@ self.addEventListener('push', (event) => {
     requireInteraction: data.requireInteraction || false
   };
 
-  // new data option **************************************************
-  // const normalizedData = {
-  //   // android
-  //   title: data.title || 'اعلان جدید',
-  //   body: data.body || 'شما یک پیام جدید دارید',
-  //   icon: data.icon || '/next.svg',
-  //   badge: data.badge || '/next.svg',
-  //   image: data.image,
-  //   url: data.url || '/',
-
-  //   // ios
-  //   aps: {
-  //     alert: {
-  //       title: data.title,
-  //       body: data.body,
-  //       subtitle: ""
-  //     },
-  //     badge: 1,
-  //     sound: 'default',
-  //   },
-  // };
-
-  // const options = {
-  //   title: normalizedData.title,
-  //   body: normalizedData.body,
-  //   icon: normalizedData.icon,
-  //   badge: normalizedData.badge,
-  //   image: normalizedData.image,
-  //   data: normalizedData,
-  //   actions: [
-  //     { action: 'open', title: 'باز کردن' },
-  //     { action: 'close', title: 'بستن' },
-  //   ],
-  //   vibrate: [200, 100, 200],
-  //   tag: 'default-tag',
-  //   requireInteraction: false,
-  //   silent: false,
-  // };
-
-
   event.waitUntil(
     self.registration.showNotification(title, options)
   );

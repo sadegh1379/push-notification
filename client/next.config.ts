@@ -1,10 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // تنظیمات برای پشتیبانی از Service Worker
   reactStrictMode: true,
   
-  // هدرهای امنیتی
   async headers() {
     return [
       {
